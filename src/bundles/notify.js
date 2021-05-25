@@ -70,7 +70,7 @@ const notify = {
       }
     }
 
-    if (action.type === 'IPFS_CONNECT_FAILED') {
+    if (action.type === 'IPFS_CONNECT_FAILED' || action.type === 'IPFS_PIN_FAILED') {
       return {
         ...state,
         show: true,
@@ -118,6 +118,9 @@ const notify = {
       if (eventId === 'IPFS_API_ADDRESS_INVALID') {
         return 'ipfsInvalidApiAddress'
       }
+      if (eventId === 'IPFS_PIN_FAILED') {
+        return 'ipfsPinFail'
+      }
 
       if (eventId === 'FILES_EVENT_FAILED') {
         const type = code ? code.replace(/^(ERR_)/, '') : ''
@@ -138,7 +141,7 @@ const notify = {
           case FILES_ACTIONS.COPY:
             return 'filesCopyFailed'
           case FILES_ACTIONS.DELETE:
-            return 'filesDeleteFailed'
+            return 'filesRemoveFailed'
           default:
             return 'filesEventFailed'
         }

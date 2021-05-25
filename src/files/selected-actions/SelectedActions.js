@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import filesize from 'filesize'
+import { humanSize } from '../../lib/files'
 import { withTranslation } from 'react-i18next'
 import StrokePin from '../../icons/StrokePin'
 import GlyphSmallCancel from '../../icons/GlyphSmallCancel'
@@ -120,7 +120,7 @@ class SelectedActions extends React.Component {
               </div>
               <div className='dn db-l f6'>
                 <p className='ma0'>{t('filesSelected', { count })}</p>
-                <p className='ma0 mt1' style={styles.size}>{t('totalSize', { size: filesize(size) })}</p>
+                <p className='ma0 mt1' style={styles.size}>{t('totalSize', { size: humanSize(size) })}</p>
               </div>
             </div>
           </div>
@@ -135,7 +135,7 @@ class SelectedActions extends React.Component {
             </button>
             <button role="menuitem" className={classNames('tc mh2', classes.action(isMfs))} onClick={isMfs ? remove : null}>
               <StrokeTrash className={classes.svg(isMfs)} fill='#A4BFCC' aria-hidden="true"/>
-              <p className='ma0 f6'>{t('app:actions.delete')}</p>
+              <p className='ma0 f6'>{t('app:actions.remove')}</p>
             </button>
             <button role="menuitem" className={classNames('tc mh2', classes.action(isSingle))} onClick={isSingle ? setPinning : null}>
               <StrokePin className={classes.svg(isSingle)} fill='#A4BFCC' aria-hidden="true"/>

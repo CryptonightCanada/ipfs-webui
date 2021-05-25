@@ -115,7 +115,7 @@ class TextInputModal extends React.Component {
           { description && typeof description === 'object' && description }
 
           { description && typeof description === 'string' &&
-            <p className='gray w-80 center'>{description}</p>
+            <p className='charcoal w-90 tl center'>{description}</p>
           }
 
           <input
@@ -123,7 +123,7 @@ class TextInputModal extends React.Component {
             onKeyPress={this.onKeyPress}
             value={this.state.value}
             required
-            className={`input-reset charcoal ba b--black-20 br1 pa2 mb2 db w-75 center focus-outline ${this.inputClass}`}
+            className={`input-reset charcoal ba b--black-20 br1 pa2 mb2 db w-90 center focus-outline ${this.inputClass}`}
             type='text' />
         </ModalBody>
 
@@ -135,7 +135,7 @@ class TextInputModal extends React.Component {
         { loading && (
           <div className="flex items-center justify-center absolute top-0 left-0 right-0 bottom-0">
             <div className="absolute top-0 left-0 right-0 bottom-0 bg-light-gray o-80"/>
-            <ComponentLoader pastDelay style={{ width: '50%', margin: 'auto' }} />
+            <ComponentLoader style={{ width: '50%', margin: 'auto' }} />
           </div>
         ) }
       </Modal>

@@ -1,10 +1,9 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { join, basename } from 'path'
-import filesize from 'filesize'
 import { withTranslation } from 'react-i18next'
 import classnames from 'classnames'
-import { normalizeFiles } from '../../lib/files'
+import { normalizeFiles, humanSize } from '../../lib/files'
 // React DnD
 import { useDrag, useDrop } from 'react-dnd'
 // Components
@@ -96,7 +95,7 @@ const File = ({
     styles.borderTop = '1px solid #eee'
   }
 
-  size = size ? filesize(size, { round: 0 }) : '-'
+  size = size ? humanSize(size, { round: 0 }) : '-'
   const hash = cid.toString() || t('hashUnavailable')
 
   const select = (select) => onSelect(name, select)
@@ -127,11 +126,11 @@ const File = ({
           </div>
         </button>
 
-        <div className='ph2 pv1 flex-none dn db-l tr mw3 w-20'>
+        <div className='ph2 pv1 flex-none dn db-l tr mw3 w-20 transition-all'>
           { pinned && !isRemotePin && <div className='br-100 o-70' title={t('pinned')} style={{ width: '2rem', height: '2rem' }}>
             <GlyphPin className='fill-aqua' />
           </div> }
-          { isRemotePin && <div className='br-100 o-70' title={t('pinned')} style={{ width: '2rem', height: '2rem' }}>
+          { isRemotePin && <div className='br-100 o-70' title={t('pinnedRemotely')} style={{ width: '2rem', height: '2rem' }}>
             <GlyphPinCloud className='fill-aqua' />
           </div> }
         </div>
